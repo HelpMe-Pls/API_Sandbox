@@ -6,7 +6,7 @@ import { RepositoryReadme } from "./RepositoryReadme";
 
 export default function App() {
   const [login, setLogin] = useState("helpme-pls");
-  const [repo, setRepo] = useState("WaterfallXHR");
+  const [repo, setRepo] = useState("waterfallXHR");
   return (
     <>
       <SearchUser value={login} onSearch={setLogin} />

@@ -5,14 +5,14 @@ import { UserRepositories } from "./UserRepositories";
 import { RepositoryReadme } from "./RepositoryReadme";
 
 export default function App() {
-  const [login, setLogin] = useState("moonhighway");
-  const [repo, setRepo] = useState("learning-react");
+  const [login, setLogin] = useState();
+  const [repo, setRepo] = useState();
   return (
     <>
       <SearchUser value={login} onSearch={setLogin} />
-      <GitHubUser login={login} />
-      <UserRepositories login={login} repo={repo} selectedRepo={setRepo} />
-      <RepositoryReadme login={login} repo={repo} />
+      {login && <GitHubUser login={login} />}
+      {login && <UserRepositories login={login} repo={repo} selectedRepo={setRepo} />}
+      {login && repo && <RepositoryReadme login={login} repo={repo} />}
     </>
   );
 }

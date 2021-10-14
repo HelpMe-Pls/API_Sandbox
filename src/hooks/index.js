@@ -32,7 +32,7 @@ export function useFetch(uri) {
         if (!mounted.current) return;
         setError(error);
       })
-  }, [uri]);
+  }, [uri, mounted]);
   return {
     // hook's return values as an object doesn't have to be strict in order when invoked
     // but their syntax is required to be exactly the same as how they're returned

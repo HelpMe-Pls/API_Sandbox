@@ -16,7 +16,7 @@ export function RepositoryReadme({ login, repo }) {
       setMarkdown(markdown);
       setLoading(false);
     }
-  }, []);
+  }, [mounted]);
 
   useEffect(() => {
     if (!repo || !login) return;

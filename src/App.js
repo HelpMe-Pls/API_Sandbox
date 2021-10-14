@@ -16,7 +16,7 @@ export default function App() {
 
   if (!login)
     return (
-      <SearchForm value={login} onSearch={handleSearch} />
+      <SearchUser value={login} onSearch={handleSearch} />
     );
 
   return (

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 
 import ReactMarkdown from "react-markdown";
 
-export default function RepositoryReadme({ repo, login }) {
+export function RepositoryReadme({ login, repo }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [markdown, setMarkdown] = useState("");
@@ -19,7 +19,7 @@ export default function RepositoryReadme({ repo, login }) {
   useEffect(() => {
     if (!repo || !login) return;
     loadReadme(login, repo).catch(setError);
-  }, [repo]);
+  }, [login, repo, loadReadme]);
 
   if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>;
   if (loading) return <p>Loading...</p>;

@@ -32,14 +32,14 @@ export const useIterator = (items = [], initialValue = 0) => {
   const prev = useCallback(() => {
     if (i === 0) return setIndex(items.length - 1);
     setIndex(i - 1);
-  }, [i]);
+  }, [i, items.length]);
 
   const next = useCallback(() => {
     if (i === items.length - 1) return setIndex(0);
     setIndex(i + 1);
-  }, [i]);
+  }, [i, items.length]);
 
-  const item = useMemo(() => items[i], [i]);
+  const item = useMemo(() => items[i], [i, items]);
 
   return [item || items[0], prev, next];
 };

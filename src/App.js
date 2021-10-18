@@ -4,6 +4,10 @@ import { GitHubUser } from "./GitHubUser";
 import { UserRepositories } from "./UserRepositories";
 import { RepositoryReadme } from "./RepositoryReadme";
 
+//TODO: Try this to see if it fixes:
+// https://dev.to/gabe_ragland/debouncing-with-react-hooks-jci
+
+
 export default function App() {
   const [login, setLogin] = useState();
   const [repo, setRepo] = useState();

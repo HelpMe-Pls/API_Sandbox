@@ -17,7 +17,7 @@ export function useFetch(uri) {
 
   useEffect(() => {
     if (!uri) return;
-    fetch(uri)
+    fetch(uri)  
       .then(data => {
         if (!mounted.current) throw new Error("component is not mounted");
         return data;

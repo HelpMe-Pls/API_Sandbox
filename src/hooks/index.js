@@ -58,7 +58,7 @@ export const useIterator = (items = [], initialIndex = 0) => {
 
   const item = useMemo(() => items[i], [i, items]);
 
-  return [item || items[0], prev, next];
+  return [item || items[0], prev, next];  // items[0] for first render
 };
 
 export default function useDebounce(value, delay) {

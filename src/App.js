@@ -14,11 +14,12 @@ export default function App() {
 
   const handleSearch = input => {
     // input === e.target.value (from <SearchUser>'s definition) === debouncedSearchTerm
-    // setLogin(input ?? "");
-    // setRepo("");   // input ?? at first render won't work
-    if (input) return setLogin(input)
-    setLogin("");
-    setRepo("");
+    
+    // if (input) return setLogin(input)
+    // setLogin("");
+    // setRepo("");
+    setLogin(input ?? "");
+    setRepo(""); 
   };
 
   if (!debouncedSearchTerm)

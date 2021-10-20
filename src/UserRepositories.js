@@ -11,7 +11,7 @@ export function UserRepositories({ login, repo, selectedRepo = (f) => f }) {
           <RepoMenu
             repositories={data}
             selected={repo}
-            onSelect={selectedRepo}
+            onSelect={selectedRepo} // passing {name} (from <RepoMenu> definition) to {selectedRepo} which ends up in {setRepo} at App.js
           />
         )}
       />

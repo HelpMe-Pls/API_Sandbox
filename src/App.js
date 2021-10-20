@@ -3,32 +3,31 @@ import { SearchUser } from "./SearchUser";
 import { GitHubUser } from "./GitHubUser";
 import { UserRepositories } from "./UserRepositories";
 import { RepositoryReadme } from "./RepositoryReadme";
-
-//TODO: Try this to see if it fixes:
-// https://dev.to/gabe_ragland/debouncing-with-react-hooks-jci
+import useDebounce from "./hooks";
 
 
 export default function App() {
   const [login, setLogin] = useState();
   const [repo, setRepo] = useState();
 
+  const debouncedSearchTerm = useDebounce(login, 500)
+
   const handleSearch = login => {
-    if (login) return setLogin(login);
-      setLogin("");
-      setRepo("");
+    setLogin(login ?? "");
+    setRepo(login ?? "");
   };
 
-  if (!login)
+  if (!debouncedSearchTerm)
     return (
-      <SearchUser value={login} onSearch={handleSearch} />
+      <SearchUser value={debouncedSearchTerm} onSearch={handleSearch} />
     );
 
   return (
     <>
-      <SearchUser value={login} onSearch={handleSearch} />
-      {login && <GitHubUser login={login} />}
-      {login && <UserRepositories login={login} repo={repo} selectedRepo={setRepo} />}
-      {login && repo && <RepositoryReadme login={login} repo={repo} />}
+      <SearchUser value={debouncedSearchTerm} onSearch={handleSearch} />
+      {login && <GitHubUser login={debouncedSearchTerm} />}
+      {login && <UserRepositories login={debouncedSearchTerm} repo={repo} selectedRepo={setRepo} />}
+      {login && repo && <RepositoryReadme login={debouncedSearchTerm} repo={repo} />}
     </>
   );
 }

@@ -14,8 +14,11 @@ export default function App() {
 
   const handleSearch = input => {
     // input === e.target.value (from <SearchUser>'s definition) === debouncedSearchTerm
-    setLogin(input ?? "");
-    setRepo("");   // input ?? at first render won't work
+    // setLogin(input ?? "");
+    // setRepo("");   // input ?? at first render won't work
+    if (input) return setLogin(input)
+    setLogin("");
+    setRepo("");
   };
 
   if (!debouncedSearchTerm)
@@ -27,7 +30,7 @@ export default function App() {
     <>
       <SearchUser value={debouncedSearchTerm} onSearch={handleSearch} />
       {login && <GitHubUser login={debouncedSearchTerm} />}
-      {login && <UserRepositories login={debouncedSearchTerm} repo={repo} selectedRepo={setRepo} />}
+      {login && <UserRepositories login={debouncedSearchTerm} singleRepo={repo} selectedRepo={setRepo} />}
       {login && repo && <RepositoryReadme login={debouncedSearchTerm} repo={repo} />}
     </>
   );

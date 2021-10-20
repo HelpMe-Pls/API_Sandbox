@@ -2,7 +2,7 @@ import React from "react";
 import { Fetch } from "./Fetch";
 import { RepoMenu } from "./RepoMenu";
 
-export function UserRepositories({ login, repo, selectedRepo = (f) => f }) {
+export function UserRepositories({ login, singleRepo, selectedRepo = (f) => f }) {
   return (
     <>
       <Fetch
@@ -10,8 +10,8 @@ export function UserRepositories({ login, repo, selectedRepo = (f) => f }) {
         renderSuccess={({ data }) => (
           <RepoMenu
             repositories={data}
-            selected={repo}
-            onSelect={selectedRepo} // passing {name} (from <RepoMenu> definition) to {selectedRepo} which ends up in {setRepo} at App.js
+            currentRepo={singleRepo}
+            onSelect={selectedRepo} // passing in {name} (from <RepoMenu> definition) to {selectedRepo} which ends up in {setRepo} at App.js
           />
         )}
       />

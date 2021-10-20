@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useIterator } from "./hooks";
 
-export function RepoMenu({ repositories, selected, onSelect = (f) => f }) {
+export function RepoMenu({ repositories, currentRepo, onSelect = (f) => f }) {
   const [{ name }, previous, next] = useIterator(
     repositories,
-    selected ? repositories.findIndex((repo) => repo.name === selected) : null
+    currentRepo ? repositories.findIndex((repo) => repo.name === currentRepo) : null
   );
 
   useEffect(() => {

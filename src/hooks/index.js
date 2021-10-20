@@ -43,8 +43,8 @@ export function useFetch(uri) {
   };
 }
 
-export const useIterator = (items = [], initialValue = 0) => {
-  const [i, setIndex] = useState(initialValue);
+export const useIterator = (items = [], initialIndex = 0) => {
+  const [i, setIndex] = useState(initialIndex);
 
   const prev = useCallback(() => {
     if (i === 0) return setIndex(items.length - 1);

@@ -12,9 +12,10 @@ export default function App() {
 
   const debouncedSearchTerm = useDebounce(login, 500)
 
-  const handleSearch = login => {
-    setLogin(login ?? "");
-    setRepo(login ?? "");
+  const handleSearch = input => {
+    // input === e.target.value (from <SearchUser>'s definition) === debouncedSearchTerm
+    setLogin(input ?? "");
+    setRepo("");   // input ?? at first render won't work
   };
 
   if (!debouncedSearchTerm)

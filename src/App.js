@@ -31,7 +31,13 @@ export default function App() {
     <>
       <SearchUser value={debouncedSearchTerm} onSearch={handleSearch} />
       {login && <GitHubUser login={debouncedSearchTerm} />}
-      {login && <UserRepositories login={debouncedSearchTerm} singleRepo={repo} selectedRepo={setRepo} />}
+      {login && (
+        <UserRepositories
+          login={debouncedSearchTerm}
+          singleRepo={repo} // defined after selectedRepo has its value
+          selectedRepo={setRepo}
+        />
+      )} 
       {login && repo && <RepositoryReadme login={debouncedSearchTerm} repo={repo} />}
     </>
   );
